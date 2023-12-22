@@ -1,0 +1,24 @@
+# Try-Except
+# These are handle structures where we handle exceptions with Try-Except blocks.
+# We write the codes for which we expect errors in the try block. In Exeption, we handle the error we expect.
+
+# For example
+# region try-except example
+#try:
+# divisor = int(input('Division: '))
+# divisor = int(input('Division: '))
+# x = divided / divided
+#print(x)
+#except:
+# print('An integer cannot be divided by zero')
+#else:
+# print('If Exception doesn't work, I will run it.') # else cannot be added in other programming languages
+#finally:
+# print(f'I'll work no matter what.')
+# endregion
+
+try:
+     age = int(input('Please type your age: '))
+     print(age)
+except ValueError as err:
+     print('Invalid input..!')
