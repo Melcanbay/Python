@@ -1,0 +1,106 @@
+# list
+# It is a structure that instantly holds one or more values for us in the application. It can hold different values of more than one type. Since the lists are kept in the RAM, they return to their created state when the application is closed.
+
+# Lists work with index logic. It stores the values stored in the list among index values that increase in positive direction, starting from the zeroth index. In other words, every value held has an index.
+
+top_boxers = ['Mike Tyson', 'Muhammad Ali', 'Lenox Lewis', 'Evander Holyfiled', 'Rocky Marcio']
+print(top_boxers[0])
+
+# region Task 1
+# Add George Forman information to the list
+top_boxers.append('George Forman') # append adds the given information to the end of the list without prompting
+print(top_boxers)
+# endregion
+
+# region Task 2
+# let's add 'Floyd MAywater' information to the 3rd index of the relevant list
+top_boxers.insert(3, 'Floyd Maywater') # insert allows us to put it in the position we want.
+print(top_boxers)
+# endregion
+
+# region Task 3
+# Delete 'Floyd Meywater' from the relevant list
+top_boxers.remove('Floyd Maywater')
+print(top_boxers)
+# endregion
+
+# region Task 4
+# Delete the information in the 4th index from the relevant list
+top_boxers.pop(4)
+print(top_boxers)
+# endregion
+
+# region Task 5
+# Let's merge the current_boxers = ['Tyson Fury', 'Deantony Wilder', 'Antony Jasua'] list with the top_boxers list.
+current_boxers = ['Tyson Fury', 'Deantony Wilder', 'Antony Jasua']
+top_boxers.extend(current_boxers)
+print(top_boxers)
+# endregion
+
+# region Task 6
+# fill an empty list with 10 random numbers between 0 and 100
+import random
+number_list = []
+for i in range(10):
+     n = random.randint(0,100)
+     number_listesi.append(n)
+print(number_list)
+
+# or
+from random import randint
+number_list = []
+for i in range(10):
+     n = random.randint(0,100)
+     number_listesi.append(n)
+print(number_list)
+# endregion
+
+# We get a phrase from the user
+# For example, hello, I'm Burak
+# let's add each letter in this phrase to a list
+# note: string expressions are a list of letters.
+soz_obegi = input('Write the sentence you want: ').lower()
+
+letters = []
+vowel_harfler_list = ['a', 'e', 'ı', 'i', 'o', 'ö', 'u', 'ü']
+silent_letters = []
+vowels = []
+
+for letter in word_obegi:
+     if letter not in vowel_harfler and letter not in silent_harfler:
+         if letter.isalpha():
+             letters.append(letter)
+         if letter in vowel_harfler_listesi:
+             vowel_harfler.append(letter)
+         else:
+             silent_harfler.append(letter)
+
+print("Letters:", letters)
+print("Vowels:", vowels)
+print("Consonants:", consonants)
+# letters should not be repeated, vowels and consonants will be in separate lists, there will be no space characters
+
+# region homework
+# Is the password entered by the user valid?
+# Rule 1: The entered password must be at least 16 characters.
+# Rule 2: must contain at least one uppercase and one lowercase letter
+# Rule 3: must have at least 1 digit
+# Rule 4: There must be punctuation marks
+# Rule 5: No phrases should be repeated
+# endregion
+
+# Let's fill two different lists with random numbers, then the values kept in similar indexes are collected and written to the same index in a third list.
+number_listesi_1 = []
+number_listesi_2 = []
+total_list = []
+for i in range(10):
+     number_list_1.insert(i, random.randint(0,100))
+     number_list_2.insert(i, random.randint(0,100))
+     total_list.insert(i, number_list_1[i] + number_list_2[i])
+print(total_list)
+
+# List Comprehansions
+print([i * i for i in range(10)])
+
+# Let's write the squares of the numbers between 0-100 that are divisible by 3 into the list.
+print([i * i for i in range(100) if i % 3 == 0])
