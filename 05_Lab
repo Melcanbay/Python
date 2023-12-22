@@ -1,0 +1,88 @@
+#For Loop
+# There are a few auxiliary operators and functions we need to examine before moving on to For Loop. These are "in" & "not in" also the range() function.
+
+# in & not in operators
+name = 'Melisa Canbay'
+
+# in
+# print('z' in name) # Result => False
+# print('M' in name) # Result => True
+
+#not in
+# print('M' not in name) # Result => False
+# print('m' not in name) # Result => True
+
+# range() function is a structure frequently used with "for". Range gives us a list of numbers according to the arguments given to it.
+# If the range() function takes one argument. It accepts the initial value as zero by default. It accepts the value we give as the end value.
+# for i in range(10):
+#print(i)
+
+# If the range() function takes 2 arguments, the first argument is considered the start and the second argument is the end.
+# for i in range(6, 10):
+#print(i)
+
+# range() function takes 3 arguments (parameters), the 1st argument is the start, the 2nd argument is the end, and the 3rd argument is the step amount.
+# for i in range(10, 100, 5):
+#print(i)
+
+# region Example 1
+# Print the sum of even and odd numbers between 1-100.
+# odd_sum = 0
+# sum_pairs = 0
+# for i in range(0, 101):
+# if i % 2 == 0:
+# sum_of_pairs += i
+#else:
+# odd_total += i
+#
+# print(f'sum of pairs: {sum_of_pairs}\n')
+# print(f'sum of oddities: {sum_of-odds}\n')
+# endregion
+
+# region Example 2
+# Let's get the start, end, and increment amount from the user.
+# Take the squares of the numbers encountered step by step and write them on the screen.
+# Format to print: ==> result from step 1
+# start = int(input('Enter the starting number: '))
+# finidh = int(input('Enter the end number: '))
+# increase = int(input('Enter the increase amount: '))
+# counter = 1
+# for i in range(start, end, increment):
+# print(f'{counter} at step ==> {i * i}')
+# counter += 1
+# endregion
+
+# Nested For Loop
+# for i in range(3):
+# print(f'External for {i}. step is running')
+# for j in range(3):
+# print(f'inner for {j}. step is running')
+
+# region Example 1
+# for i in range(1, 11):
+# for j in range(1, 11):
+# print(f'{i} x {j} = {i * j}')
+# print("----------")
+# endregion
+
+# region Example 2
+# Make a filled rectangle using the 'x' symbol.
+# for i in range(4):
+# for j in range(6):
+# print('x', end='')
+# print(' ')
+## or
+# short_edge = int(input('Enter short edge: '))
+# long_side = int(input('enter long side: '))
+# for i in range(short_side):
+# for j in range(long_edge):
+# print('x', end='')
+# print(" ")
+# endregion
+
+# Let's draw a right triangle using 'x'.
+for i in range(10):
+     for j in range(10):
+         if j <= i:
+             print('x', end='')
+     print(' ')
