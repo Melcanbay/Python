@@ -1,0 +1,179 @@
+# Decision Mechanisms
+#If-Elif-Else
+
+# region Example 1
+# Let's take two numbers from the user and write the larger of these numbers to the screen.
+# x = int(input('Number: '))
+# y = int(input('Number: '))
+#
+# if x > y:
+# print(f'{x} is greater than..!')
+# elif x == y:
+# print('The numbers are equal')
+#else:
+# print(f'{y} is greater than..!')
+# endregion
+
+# region Example 2
+# Is the number received from the user even or odd?
+# x = int(input('Enter number: '))
+# if x % 2 == 0:
+# print('even number')
+#else:
+# print('odd number')
+# end region
+
+# region Example 3
+# Is the number received from the user positive, negative or neutral?
+# x = int(input('Enter number: '))
+# if x > 0:
+# print('positive')
+# elif x == 0:
+# print('neutral')
+#else:
+# print('negative')
+# endregion
+
+# region Example 4
+# Let's get season information from the user. Let's write the months on the screen according to the seasonal information received.
+# x = input('Enter the season: ').lower()
+# if x == 'spring':
+# print(f'{x: } march, april, may')
+# elif x == 'write':
+# print(f'{x: } june, july, august')
+# elif x == 'autumn':
+# print(f'{x: } september, october, november')
+# elif x == 'autumn':
+# print(f'{x: } december, january, february')
+#else:
+# print('There is no such season!')
+
+# x = input('Enter the season: ').lower()
+#matchx:
+# case 'winter':
+# message = 'December, January, February'
+# case 'spring':
+# message = 'March, April, May'
+# case 'write':
+# message = 'june, july, august'
+# case 'autumn':
+# message = 'September, October, November'
+#case _:
+# message = 'There is no such season. 'Are you an alien?'
+#
+# print(message)
+# endregion
+
+# region Example 5
+# Write an application that tells you whether the vehicle is penalized or not, based on the vehicle type and speed information received from the user.
+# vehicle_type = input('Enter your vehicle type: ').lower()
+# speed = int(input('Enter speed: '))
+# if speed > 0:
+# if car_tour == 'car':
+# if speed >= 120:
+# print('you are grounded!')
+#else:
+# print('u r good 2 go')
+# elif vehicle_tour == 'engine':
+# if speed > 150:
+# print('You are grounded!')
+#else:
+# print('u r good 2 go')
+# elif vehicle_tour == 'truck':
+# if speed > 90:
+# print('you are grounded!')
+#else:
+# print('u r good 2 go')
+#else:
+# print('You are grounded again! Write properly!')
+#else:
+# print('Speed information cannot be negative!')
+# #endregion
+
+# region Example 6
+# Let's show which of the numbers received from the user is larger
+# number_1 = int(input('Enter the 1st number: '))
+# number_2 = int(input('Enter the 2nd number: '))
+# number_3 = int(input('Enter the 3rd number: '))
+# if number_1 > number_2 and number_1 > number_3:
+# print(f'{number_1} is greater than others')
+# elif number_2 > number_1 and number_2 > number_3:
+# print(f'{number_2} is greater than others')
+# elif number_3 > number_1 and number_3 > number_2:
+# print(f'{number_3} is greater than others')
+#else:
+# print('numbers may be equal')
+# endregion
+
+# region Example 7
+# Let's get the username, password, weight and height information from the user and calculate the body mass index.
+# username = input('Enter your username: ')
+# password = input('Enter your password: ')
+# if username == 'Username123' and password == 'password123':
+# print('logged in')
+# height = int(input('enter height information: '))
+# weight = int(input('enter weight information: '))
+# index = weight / height ** 2
+# if 18.5 <= index <= 24.9:
+# print('normal')
+# elif index < 18.5:
+# print('weak')
+# elif index > 25:
+# print('overweight')
+#else:
+# print('incorrect information')
+# endregion
+
+# region Example 8
+# We take the midterm (30%), final (60%) and homework (10%) grades from the user and calculate the grade he received.
+visa = int(input('Enter your visa grades: '))
+final = int(input('Enter your final grades: '))
+odev = int(input('Enter your homework grades: '))
+pass_grade = midterm * 0.3 + final * 0.6 + homework * 0.1 / 3
+if pass_grade >= 85:
+     print('AA')
+elif 75 <= pass_note <= 84:
+     print('BB')
+elif 60 <= pass_note <= 74:
+     print('CC')
+else:
+     print('you failed the class')
+# endregion
+
+# region Example 9
+# We ask the user for the number of books he purchased. A book is 5 TL
+# 5% if less than 20, 10% if 21-50,
+15% between # 51-75,
+Between #75 and 100 there is a 25% discount. How much money should the user pay?
+book_number = int(input('Enter the number of books purchased: '))
+if 0 < book_count <= 20:
+     amount_1 = number of books * 5 * 95 / 100
+     print(amount_1)
+elif 21 <= book_sayisi <= 50:
+     amount_2 = number of books * 5 * 90 / 100
+     print(amount_2)
+elif 51 <= book_sayisi <= 75:
+     amount_3 = number of books * 5 * 85 / 100
+     print(amount_3)
+elif 75 < book_number <= 100:
+     print(f'Number of books purchased {book_count}\nTotal amount to be paid {book_count * 5 * 75 / 100}')
+else:
+     print('don't buy more books')
+# endregion
+
+# region Example 10
+We receive product information from # users. We show which aisle the purchased product is in.
+product = input('Enter the product you are looking for: ').lower()
+if product in ['banana', 'strawberry', 'apple']:
+     print('look at the fruit section')
+elif urun in ['pc', 'phone', 'headset']:
+     print('look at the technology section')
+elif urun in ['shampoo', 'perfume', 'soap']:
+     print('look at the cosmetics section')
+else:
+     print('go to another location')
+
+product = input('Enter the product you are looking for: ').lower()
+if product == 'tomato' or product == 'pepper':
+     print('look at the vegetable section')
+# endregion
