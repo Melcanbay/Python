@@ -1,0 +1,96 @@
+# While Loop
+# It is the mechanism we prefer when we want to perform repetitive transactions.
+# While loop contains a decision mechanism along with a counter. The loop continues to rotate as long as the condition is met by increasing or decreasing the counter.
+
+
+# region Example 1
+# Let's print the numbers between 0 and 100 on the screen
+# counter = 0
+# while counter <= 100:
+# print(counter)
+# counter = counter + 1 # counter +=1 (short writing)
+# endregion
+
+# region Example 2
+# Let's add the even numbers between 1-100 and print the final result on the screen
+# counter = 1
+# total = 0
+# while counter <= 100:
+# total = total + counter
+# counter = counter + 1
+# print(f'result: {total}')
+# endregion
+
+# region Example 3
+# Let's find how many even and odd numbers there are between 0-100 and print them on the screen.
+# counter = 100
+# odd_numbers = 0
+# even_numbers = 0
+# while counter >= 0:
+# if counter % 2 == 0:
+# even_numbers += 1
+# else:
+# odd_numbers += 1
+# counter -= 1
+# print(f'Even number quantity: {even_numbers}\nOdd number quantity: {odd_numbers}')
+# endregion
+
+# region Example 4
+# Sums of even and odd numbers between 0-100
+# counter = 100
+# odd_numbers = 0
+# even_numbers = 0
+# while counter >= 0:
+# if counter % 2 == 0:
+# even_numbers += counter
+#else:
+# odd_numbers += counter
+# counter -= 1
+# print(f'Sum of even numbers: {even_numbers}\nSum of odd numbers: {odd_numbers}')
+# endregion
+
+# region Example 5
+# We get the transaction type from the user. For example, if it is addition, let's take the + symbol, if it is multiplication, the * symbol as input. Depending on the operation type, let's perform the relevant operation on 2 integers and press the screen. The user can perform as many transactions as he wants. When you press e the application will close
+
+# while True:
+# transaction_type = input('Enter the operation you want to perform: ').lower()
+# match transaction_round:
+# case 'e':
+# print('application is closing')
+# break
+#case _:
+# number_1 = int(input('enter the first number: '))
+# number_2 = int(input('enter the second number: '))
+# if transaction_round == '+':
+# print(f'Addition: {number_1 + number_2}')
+# elif transaction_round == '-':
+# print(f'Subtract: {number_1 - number_2}')
+# elif transaction_round == '*':
+# print(f'Multiply: {number_1 * number_2}')
+# elif transaction_round == '/':
+# print(f'Division: {number_1 * number_2}')
+#else:
+# print('please check your transaction type!')
+# endregion
+
+# region Example 6
+# Let's show whether the number received from the user is prime or not.
+x = int(input('Enter number:'))
+is_prime = True
+if x < 0:
+     print('negative numbers cannot be prime!')
+else:
+     is_prime = True
+     if x == 1:
+         is_prime = False
+     counter = 2
+     while counter < x:
+         if x % counter == 0:
+             is_prime = False
+             break
+         counter += 1
+     if is_prime:
+         print(f'{x} is prime.')
+     else:
+         print(f'{x} is not prime')
+# endregion
