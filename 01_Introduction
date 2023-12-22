@@ -1,0 +1,55 @@
+# variable?
+# While studying the algorithm, we compared variables to boxes. We mentioned that we store information from the user in
+# We use variables according to the type of value we will store. So we should understand this from this sentence. Variables have types.
+# When defining a variable in other programming languages, we first write the type of the variable, then its name and the value it will hold.
+# For example:
+# int x = 5
+# string user_name = 'Melisa Canbay'
+# double pi = 3.14
+
+# Declaring variables in Python
+# When defining variables in Python, we do not specify any type as in other programming languages. It automatically takes on the type of value we put into it.
+
+# x=5
+# print(type(x)) # here we printed the type of the variable x on the screen with the type () built-in function
+# x = 'Melisa Canbay'
+# print(type(x))
+
+# Let's get two integers from the user and do 4 basic operations.
+# Copies the same line you are on to the line below with CTRL + D
+# x = int(input('Enter your value: '))
+# y = int(input('Enter your value: '))
+# total = x + y
+# print(f'Result: {total}')
+# subtraction = x - y
+# print('Subtraction result: {}'.format(subtraction))
+# multiplication = x * y
+# print('Result: ', multiply)
+# division = x / y
+# print(f'Result: {bolme}')
+
+# Develop an application that calculates the area and perimeter of a square based on the edge information received from the user.
+x = int(input('Enter edge information: '))
+area = x * x
+perimeter = 4 * x
+print(f'Field: {field}')
+print(f'environment: {environment}')
+
+# Write an application that calculates the area and perimeter of the rectangle based on the short and long side information received from the user.
+short_edge = int(input('enter short edge: '))
+long_side = int(input('enter long side: '))
+area = short_edge * long_edge
+perimeter = short_side * 2 + long_side * 2
+print(f'Area: {area}')
+print(f'Perimeter: {perimeter}')
+
+# NOTE!
+# Things to consider when defining variables:
+# 1. Our variables should not start with numerical expressions.
+# 2. It should not contain Turkish characters.
+# 3. If our variable name consists of more than one word, we should use the "_" symbol instead of using spaces.
+
+# Let's get the base and height values of the triangle from the user and calculate its area.
+base = int(input('enter base information: '))
+height = int(input('enter height information: '))
+print(f'area: {base * height / 2}')
