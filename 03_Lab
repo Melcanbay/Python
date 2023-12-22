@@ -1,0 +1,75 @@
+# Dictionary
+# Dictionary object is another structure in which we can temporarily store data, such as list and tuple.
+# Dictionary works with 'key' and 'value' logic
+# Keys are used to access any value
+
+# my_dict : {
+# 'Full Name': 'Melisa Canbay',
+# 'Age': 18,
+# 'Sports': ['Tennis', 'F1', 'Snooker'],
+# 'Favorite Animes': {
+# 'Adventure': 'JOJO',
+# 'Mecha': {
+# 'Lelouch vi Britannia': 'Code Geass'
+# }
+# }
+# }
+
+release_year_movie = {
+     'Fight Club': 1999,
+     'The Matrix': 1999,
+     'Interstaller': 2014,
+     'Inception': 2010,
+     'Dune': 2021
+}
+print(release_year_movie['Fight Club'])
+print(f'Release Year: {release_year_movie.get("Interstaller")}')
+
+# Let's print all the keys of the dictionary to the screen
+for key in release_year_movie.keys():
+     print(key)
+
+# Print all values of the dictionary to the screen
+print([i for i in release_year_movie.values()])
+
+# Let's print the keys and values of the dictionary to the screen
+print(release_year_movie.items())
+
+products = [
+     {'name': 'Everlast Pro Boxing Gloves', 'price': 245},
+     {'name': 'Everlast Training Gloves', 'price': 200},
+     {'name': 'Everlast Heavy Bag', 'price': 445},
+     {'name': 'Iphone 15 Pro Max', 'price': 80000},
+     {'name': 'Samsung G23 Ultra', 'price': 65000},
+     {'name': 'Lenevo x1 Carbon', 'price': 49000}
+]
+
+# Add all the prices in the products list and print them on the screen
+total_price = 0
+for product in products:
+     total_price += product.get('price')
+
+print((f'Total: {total_price}'))
+
+# Let's print the names of the products in the products list with product prices greater than 30000.
+for product in products:
+     if product['price'] >= 30000:
+         print(product['name'])
+
+# List the products that contain Everlast in the product name and whose price range is between 240 and 500
+for product in products:
+     if 'Everlast' in product['name'] and 240 <= product['price'] <= 500:
+         print(product['name'])
+
+# CRUD Operations (Create - Read - Update - Delete)
+# Let's create an empty students dictionary. The structure of the dictionary is shown below.
+# students = {
+# 'student_id': {
+# 'first_name': 'Melisa',
+# 'last_name': 'Canbay',
+# 'phone': '653452',
+# }
+# }
+
+# The user should be able to choose what to do, that is, select operations such as exit, create, read, update, delete.
+students = {}
