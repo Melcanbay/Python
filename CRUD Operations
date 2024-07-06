@@ -1,0 +1,90 @@
+
+# CRUD (Create, Read, Update, Delete)
+# categories = {} empty bir dictionary, sınıftan bağımsız
+# category adında bir class olsun. Name, description -> object attribute
+# Category_Service adında bir class olsun. Bu class içerisinde CRUD operasyonları yürütürken fonksiyonlar kullanılacak
+
+database = {}
+
+class Category:
+    def __init__(self, name: str, description: str): 
+        self.id = uuid4()
+        self.description = description
+        self.name = name
+
+class Category_Service:
+    def create(self, category: Category):
+        database[category.id] = {
+            'name': category.name,
+            'description': category.description
+        }
+        print('Category has been created.')
+
+    def update(self, id: str, name: str, description: str):
+        current_category = self.get_by_id(id)
+
+        current_category.update({
+            'name': name,
+            'description': description
+        })
+        
+
+    def delete(self, id: str) -> None:
+        current_category = self.get_by_id(id)
+
+        if current_category != {}:
+            del database[id]
+            print('Category has been deleted. ')
+        else:
+            print("Category hasn't been deleted.")
+    def get_all(self, db: dict) -> None:
+        print(db)
+
+    def get_by_id(self, id: str) -> dict:
+        for i in database.keys():
+            if i == id:
+                return database[id]
+
+def main():
+    while True:
+        process = input('Please type a transaction name: ').lower()
+
+        match process:
+            case 'exit':
+                print('Application is closing.')
+                break
+            case 'create':
+                category_name = input('Category Name: ')
+                category_description = input('Description: ')
+                new_category = Category(name=category_name, description=category_description)
+                Category_Service.create(category=new_category)
+                Category_Service.get_all(db=database)
+            case 'update':
+                id = input('ID: ')
+                name = input('Name: ')
+                description = input('Description: ')
+                Category_Service.update(id, name, description)
+                print(Category_Service.get_by_id(id))
+
+                current_category = Category_Service.get_by_id(id)
+
+                Category_Service.update(id, name, description)
+            case 'delete':
+                id = input('ID: ')
+            case 'get all':
+                Category_Service.get_all(db=database)
+            case 'get by id':
+                id = input('ID: ')
+            case _:
+                print('Please type a correct transaction name.')
+
+    Category_Service = Category_Service()
+
+    Category = Category(name='Rui Kamishiro', descrption='Best charachter')
+
+    Category_Service.create(Category=new_category)
+
+    print(database)
+
+main()
+
