@@ -1,0 +1,99 @@
+
+# Department adında bir sınıf oluşturalım
+# department_name ve employee_count -> class attribute
+# namw, agw -> object attribute
+# show_information()
+# show_employee_count()
+
+class Department:
+    # class attributes
+    department_name = 'Software Developer'
+    employee_count = 0
+
+    def __init__(self, name, age):
+        # object attributes
+        self.age = age
+        self.name = name
+        Department.employee_count += 1
+        self.show_employee_count()
+
+    def show_information(self):
+        print(f'Name: {self.name}\n'
+              f'Age: {self.age}\n'
+              f'Department: {self.department_name}')
+        
+    def show_employee_count(self):
+        print(f'Total Employee: {self.employee_count}')
+
+e1 = Department(name='Melisa Canbay', age=18)
+e1.show_information
+
+e2= Department(name='Bilge Cem Dönmez', age=18)
+e2.show_information
+
+# Software_Developer adında bir class oluşturalım
+# first_name, last_name -> object attribute
+# Language_knowledge = [] -> class attribute
+# show_info()
+# add_new_language(), birden fazla dil eklenebilsin
+
+class Software_Developer:
+    language_knowledge = []
+
+    def __init__(self, first_name, last_name):
+        self.last_name = last_name
+        self.first_name = first_name
+
+    def show_information(self):
+        print(f'First Name: {self.first_name}\n'
+              f'Last Name: {self.last_name}\n'
+              f'Programing Language: {self.language_knowledge}')
+        
+    def split_language(self, input_language: str) -> list:
+        return input_language.split(',')
+    
+    def add_language(self,lst_language: list) -> None:
+        for item in lst_language:
+            self.language_knowledge.append(language.lstrip())
+
+s1 = Software_Developer(first_name='Melisa', last_name='Canbay')
+language = input('Type programming language: ')
+language_list = s1.split_language(language)
+s1.add_language(language_list)
+s1.show_information
+
+# new example
+from random import choice
+class Character:
+    def __init__(self, name: str, race: str, role: str, level: int, weapon_strength: int, armour: int, hp: int):
+        self.hp = hp
+        self.armour = armour
+        self.weapon_strength = weapon_strength
+        self.level = level
+        self.role = role
+        self.race = race
+        self.name = name
+
+    def attack(self):
+        return self.level * self.weapon_strength
+    
+    def defend(self):
+        return self.level * self.armour
+    
+    def dodge(self):
+        return (self.level * self.weapon_strength) - (self.level * self.weapon_strength)
+    
+    def main():
+        c1 = Character(name='Lyney', race='Fontaine', role='House of Hearts member', level=90, weapon= 90, armour= 0, hp=18000)
+        c2 = Character(name='Neuvillette', race='Fontaine', role='Dragon', level=90, weapon= 90, armour= 0, hp=26000)
+
+        while True:
+            bot_actions = [c2.attack, c2.defend, c2.dodge]
+        
+            choice(bot_actions)
+
+            # c1 için action alın
+
+            # if else ile kontrol edilir
+
+            # oyuncuların hp'leri kontrol edilicek herhangi biri sıfırın altına indiğinde oyun duracak
