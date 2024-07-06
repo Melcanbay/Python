@@ -1,0 +1,94 @@
+# barbut oyunu
+from random import choice, randint
+bots = ['Cem', 'Defne', 'Begüm']
+users_dict = {
+    '1': {
+        'username': 'melisa',
+        'password': '123',
+        'safe': 1200
+    },
+    '2': {
+        'username': 'melisa2',
+        'password': '123',
+        'safe': 2200
+    }
+}
+minimum_bet = 100
+
+def assign_default_bot(bot_list: list) -> str:
+    return choice(bot_list)
+
+def roll_dice() -> int:
+    return randint(1, 6) + randint(1, 6)
+
+def bet_is_valid(current_bet, safe: int) -> bool:
+    if minimum_bet <= current_bet <= safe:
+        return True
+    else:
+        return False
+    
+def gain_daily_chips() -> int:
+    return randint (1000, 2000)
+
+def login(username: str, password: str) -> dict:
+    is_true = False
+    user_id = ''
+
+    for i in range(1, len(users_dict) + 1):
+        if users_dict.get(str(i)).get('username') == username and users_dict.get(str(i)).get('password') == password:
+            is_true = True
+            user_id = str(i)
+            break
+    
+    if is_true:
+        return users_dict.get(user_id)
+    else:
+        return{}
+
+def main():
+    auth_user = login(
+        input('Username: '),
+        input('Password: ')
+    )
+
+    if auth_user != {}:
+        daily_chips = gain_daily_chips()
+
+        auth_user.update({
+            'safe': auth_user.get('safe') + daily_chips
+        })
+
+        print(f"Welcome {auth_user.get('username')}, you gain {daily_chips} and so your safe is {auth_user.get('safe')}")
+
+        while True:
+            if auth_user.get('safe') >= minimum_bet:
+                bet = int(input('Please make a bet: '))
+                if bet_is_valid(bet, auth_user.get('safe')):
+                    player_2 = assign_default_bot(bot_list=bots)
+
+                    player_1_roll = roll_dice()
+                    player_2_roll = roll_dice()
+
+                    if player_1_roll > player_2_roll:
+                        auth_user.update({
+                            'safe': auth_user.get('safe') + (bet * 2)
+                        })
+                        print(f'Your dice is {player_1_roll}\n{player_2} s dice is {player_2_roll}')
+                        print(f"Congratulations {auth_user.get('username')}. your current safe is {auth_user.get('safe')}")
+                    elif player_2_roll > player_1_roll:
+                        auth_user.update({
+                            'safe': auth_user.get('safe') - bet
+                        })
+                        print(f'Your dice is {player_1_roll}\n{player_2} s dice is {player_2_roll}')
+                        print(f"{auth_user.get('username')} kaybetti, your current safe is {auth_user.get('safe')}")
+                else:
+                    print('Please give a valid bet.')
+
+            else:
+                print('Your safe is not enough to play')
+                break
+
+    else:
+        print('Invalid info')
+
+main()
