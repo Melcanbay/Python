@@ -1,0 +1,163 @@
+melisa_account = {
+    'account_no': '12345',
+    'full_name': 'Melisa Canbay',
+    'username': 'mei',
+    'password': '123',
+    'balance': 10000,
+    'additional_balance': 1000
+}
+
+cem_account = {
+    'account_no': '67890',
+    'full_name': 'Bilge Cem Dönmez',
+    'username': 'prfdoom',
+    'password': '123',
+    'balance': 7000,
+    'additional_balance': 1000
+}
+
+defne_account = {
+    'account_no': '34729',
+    'full_name': 'Defne Karaali',
+    'username': 'irie',
+    'password': '123',
+    'balance': 5000,
+    'additional_balance': 1000
+}
+
+users = [melisa_account, cem_account, defne_account]
+
+# Çekilmek istenilen para bakiye tarafından karşılanmalı
+# Miktar baiyeden fazla ise ek hesap kullanılsın mı diye müşteriden onay alınsın
+# Müşteri evet derse ek hesap devreye girsin ve para çekilsin
+# Müşterinin balance ve additional balance çekilmke istenilen tutarı karşılayamıyorsa feedback verip işlem otomatik olarak durdurulsun
+
+def withdraw_money(amount: int, account: dict):
+    if account['balance'] >= amount:
+        account['balance'] -= amount
+        print("Don't forget to take your money.")
+        print(f"You have {account['balance']} tl account number {account['account_no']}"
+              f"Aditional balance has {account['additional_balance']}")
+    else:
+        total_balance = account['balance'] + account['additional_balance']
+
+        if total_balance >= amount:
+            use_additional_balance = input('Insufficent balance. Do you want to use additional balance').lower()
+
+            match use_additional_balance:
+                case 'yes':
+                    amount_used_additional_balance = amount - account['balance']
+                    account['balance'] = 0
+                    account['additional_balance'] -= amount_used_additional_balance
+                    print(f"You have {account['balance']} tl account number {account['account_no']}"
+                          f"Aditional balance has {account['additional_balance']}")
+                case 'no':
+                    print('Transaction has been cancelled.')
+                    print(f"You have {account['balance']} tl account number {account['account_no']}"
+                          f"Aditional balance has {account['additional_balance']}")
+                case _:
+                    print('Please choose a valid answer. ("yes" or "no")')
+        else:
+            total_balance = account['balance'] + account['additional_balance']
+
+def balance_result(account: dict) -> None:
+    print(f"You have {account['balance']} tl account number {account['account_no']}"
+          f"Aditional balance has {account['additional_balance']}")
+
+def deposit_money(account: dict, amount: int) -> None:
+    account['balance'] += amount
+    if account['additional_balance'] < 1000:
+        transfered_amount = 1000 - account['additional_balance']
+        account['balance'] -= transfered_amount
+        account['additional_balance'] += transfered_amount
+    balance_result(account)
+
+def menu(account: dict) -> None:
+    print(f"""
+          Welcome, {account['full_name']}
+          ===============================
+          Withdraw Money              => 1
+          Deposit Money               => 2
+          Account info                => 3
+          EFT                         => 4
+          Exit                        => 5
+          """)
+    
+def show_account_information(account: dict) -> None:
+    print(f"Account Information\n"
+          f"Full Name: {account['full_name']}\n"
+          f"Account no: {account['account_no']}\n"
+          f"Username: {account['username']}\n"
+          f"Password: {account['password']}\n"
+          f"Balance: {account['balance']}\n"
+          f"Additional_balance: {account['additional_balance']}\n")
+    
+def eft_transction(sender_account: dict, 
+                   receiver_accaount_no: str, 
+                   amount: int) -> None:
+    for user in users:
+        if user['account_no'] == receiver_accaount_no:
+            if sender_account['balance'] >= amount:
+                sender_account['balance'] -= amount
+                user['balance'] += amount
+                balance_result(sender_account)
+            else:
+                total_balance = sender_account['balance'] + sender_account['additional_balance']
+
+                if total_balance >= amount:
+                    use_additional_balance = input('Insufficent balance. Do you want to use your additional balance? ("yes" or "no")').lower()
+
+                    if use_additional_balance == "yes":
+                        amount_used_additional_balance = amount - sender_account['balance']
+                        sender_account['balance'] = 0
+                        sender_account['additional_balance'] -= amount_used_additional_balance
+                        balance_result(sender_account)
+                        user['balance'] += amount
+                    elif use_additional_balance == "no":
+                        print('Transaction has been canceled!')
+                        balance_result(sender_account)
+                    else:
+                        print('Please type valid answer like "yes" or "no"!')
+                else:
+                    print('Insufficent balance. Transaction has been canceled!')
+
+def log_in(username: str, password: str) -> dict:
+    account = {}
+
+    for user in users:
+        if user['username'] == username and user['password'] == password:
+            account = user
+            break
+    return account
+
+def main():
+    user_account = log_in(
+        input('Username: ').lower(), input('Password: ')
+    )
+
+    if user_account != {}:
+        menu(user_account)
+
+        process = input('Please choose a process: ')
+
+        match process:
+            case '1':
+                withdraw_money(amount = int(input('Amount: ')), 
+                               account = user_account)
+            case '2':
+                deposit_money(account = user_account, 
+                              amount = int(input('Amount: ')))
+            case '3':
+                show_account_information(account = user_account)
+            case '4':
+                eft_transction(sender_account = user_account,
+                               receiver_accaount_no = input('IBAN: '),
+                               amount = int(input('Amount: ')))
+            case '5':
+                print('Application is  closing.!')
+            case _:
+                print('Please choose a valid process!')
+
+    else:
+        print('Authentication failed. Please check your information.')
+main()
